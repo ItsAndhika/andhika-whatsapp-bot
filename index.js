@@ -30,9 +30,16 @@ async function runCompletion(message) {
 
 client.on("message", async (message) => {
 	if (message.body == "Assalamualaikum") {
-		message.reply("Waalaikumsalam");
+		message.reply("Wa'alaikumsalam");
 	}
-	if (message.body.startsWith("!ai")) {
+	if (message.body == ":menu") {
+		message.reply(`
+	Andhika's Bot 🤖
+
+	Command = :ai
+	Info = Ask anything to AI`);
+	}
+	if (message.body.startsWith(":ai")) {
 		console.log(message.body);
 		const response = await runCompletion(message.body);
 		message.reply(response);
