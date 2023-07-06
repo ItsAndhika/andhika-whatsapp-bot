@@ -1,9 +1,12 @@
-import { Client } from "whatsapp-web.js";
+import Whatsapp from "whatsapp-web.js";
 import { Configuration, OpenAIApi } from "openai";
 import qrcode from "qrcode-terminal";
 import "dotenv/config.js";
+const { Client, LocalAuth } = Whatsapp;
 
-const client = new Client();
+const client = new Client({
+	authStrategy: new LocalAuth(),
+});
 
 client.on("qr", (qr) => {
 	qrcode.generate(qr, { small: true });
